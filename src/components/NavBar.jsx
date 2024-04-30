@@ -23,7 +23,7 @@ const NavBar = () => {
                             { navLinks }
                         </ul>
                     </div>
-                    <Link to="/"  className="btn btn-ghost">
+                    <Link to="/">
                         <img src={logo} alt="logo" className="w-14 lg:w-20" />
                     </Link>
                 </div>
