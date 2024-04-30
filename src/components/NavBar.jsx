@@ -33,7 +33,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <button className="btn border-[#FF3811] text-[#FF3811] font-semibold text-lg">Appointment</button>
+                    <button className="btn border-[#FF3811] text-[#FF3811] font-semibold text-lg bg-white">Appointment</button>
                 </div>
             </div>
         </nav>
