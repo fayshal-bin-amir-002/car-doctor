@@ -3,7 +3,7 @@ import bg from "../../assets/images/homeCarousel/3.jpg";
 const Slide3 = () => {
     return (
         <div className="relative flex items-center w-full h-[600px] rounded-lg overflow-hidden bg-no-repeat bg-cover bg-bottom" style={{ backgroundImage: `url(${bg})` }}>
-            <div className="absolute h-full w-full bg-black bg-opacity-20">
+            <div className="absolute h-full w-full bg-black bg-opacity-30">
             </div>
             <div className="w-full z-10 lg:w-2/5 space-y-5 lg:space-y-7 text-white px-6 lg:px-28">
                 <h3 className="text-4xl lg:text-6xl font-bold text-white">Affordable Price For Car Servicing</h3>

@@ -3,7 +3,7 @@ import img2 from "../assets/images/about_us/parts.jpg";
 
 const AboutUs = () => {
     return (
-        <div className="my-7 md:my-14 lg:my-28 px-6 flex flex-col lg:flex-row gap-14 md:gap-28">
+        <div className="my-7 md:my-14 lg:my-28 flex flex-col lg:flex-row gap-14 md:gap-28">
             <div className="lg:w-1/2">
                 <div className="relative">
                     <img src={img1} alt="" className="rounded-lg w-[90%]" />
