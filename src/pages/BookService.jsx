@@ -33,8 +33,6 @@ const BookService = () => {
             image: service.img
         }
 
-        console.log(order);
-
         fetch('http://localhost:3000/bookings', {
             method: "POST",
             headers: {'content-type': "application/json"},
@@ -75,7 +73,7 @@ const BookService = () => {
                             <input type="email" name="email" defaultValue={user?.email} placeholder="Your Email" className="input input-bordered w-full" />
                         </label>
                         <label className="form-control w-full mb-5 lg:mb-7">
-                            <input type="text" name="amount" defaultValue={service.price + ' $'} placeholder="Your Due" className="input input-bordered w-full" />
+                            <input type="text" name="amount" defaultValue={service.price} placeholder="Your Due" className="input input-bordered w-full" />
                         </label>
                         <label className="form-control w-full md:col-span-2 mb-7 lg:mb-12">
                             <textarea name="msg" className="border rounded-lg p-4" placeholder="Your Message" rows="7"></textarea>

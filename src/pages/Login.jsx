@@ -4,6 +4,7 @@ import { FaFacebook, FaGoogle, FaGithub } from "react-icons/fa";
 import LoginNav from "../components/LoginNav";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
 
@@ -19,12 +20,12 @@ const Login = () => {
         userLogin(email, password) 
             .then((result) => {
                 if(result.user) {
-                    alert("Log in successfully.");
+                    toast.success("Log in successfully.");
                     form.reset();
                 }
             })
             .catch((error) => {
-                console.log(error);
+                toast.error(error.message);
             })
     }
 
