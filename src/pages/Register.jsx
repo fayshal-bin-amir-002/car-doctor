@@ -2,11 +2,28 @@ import { Link } from "react-router-dom";
 import loginImg from "../assets/images/login/login.svg";
 import { FaFacebook, FaGoogle, FaGithub } from "react-icons/fa";
 import LoginNav from "../components/LoginNav";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
 
+    const { userRegister } = useContext(AuthContext);
+
     const handleRegister = (e) => {
         e.preventDefault();
+        
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        userRegister(email, password)
+            .then((result) => {
+                console.log(result.user);
+                form.reset();
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     return (
@@ -23,15 +40,15 @@ const Register = () => {
                             <div className="label font-semibold">
                                 <span className="label-text">Email</span>
                             </div>
-                            <input type="email" placeholder="Your email" className="input input-bordered w-full" />
+                            <input type="email" name="email" placeholder="Your email" className="input input-bordered w-full" />
                         </label>
                         <label className="form-control w-full mb-8 lg:mb-12">
                             <div className="label font-semibold">
                                 <span className="label-text">Password</span>
                             </div>
-                            <input type="password" placeholder="Your password" className="input input-bordered w-full" />
+                            <input type="password" name="password" placeholder="Your password" className="input input-bordered w-full" />
                         </label>
-                        <button className="btn bg-[#FF3811] border-none text-white font-semibold text-lg w-full">Log In</button>
+                        <button className="btn bg-[#FF3811] border-none text-white font-semibold text-lg w-full">Register</button>
                         <p className="font-medium text-lg my-6 lg:my-8 text-center opacity-80">Or Sign Up with</p>
                         <div className="flex justify-center gap-10 text-2xl mb-6 lg:mb-12">
                             <span className="p-3 bg-gray-200 rounded-full cursor-pointer text-red-500"><FaGoogle /></span>

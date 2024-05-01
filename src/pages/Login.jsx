@@ -2,11 +2,30 @@ import { Link } from "react-router-dom";
 import loginImg from "../assets/images/login/login.svg";
 import { FaFacebook, FaGoogle, FaGithub } from "react-icons/fa";
 import LoginNav from "../components/LoginNav";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
 
+    const { userLogin } = useContext(AuthContext);
+
     const handleLogin = (e) => {
         e.preventDefault();
+
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        userLogin(email, password) 
+            .then((result) => {
+                if(result.user) {
+                    alert("Log in successfully.");
+                    form.reset();
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     return (
@@ -23,13 +42,13 @@ const Login = () => {
                             <div className="label font-semibold">
                                 <span className="label-text">Email</span>
                             </div>
-                            <input type="email" placeholder="Your email" className="input input-bordered w-full" />
+                            <input type="email" name="email" placeholder="Your email" className="input input-bordered w-full" />
                         </label>
                         <label className="form-control w-full mb-8 lg:mb-12">
                             <div className="label font-semibold">
                                 <span className="label-text">Password</span>
                             </div>
-                            <input type="password" placeholder="Your password" className="input input-bordered w-full" />
+                            <input type="password" name="password" placeholder="Your password" className="input input-bordered w-full" />
                         </label>
                         <button className="btn bg-[#FF3811] border-none text-white font-semibold text-lg w-full">Log In</button>
                         <p className="font-medium text-lg my-6 lg:my-8 text-center opacity-80">Or Sign In with</p>

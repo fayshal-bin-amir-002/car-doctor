@@ -1,15 +1,21 @@
-import { useEffect, useState } from "react";
 import ServiceCard from "./ServiceCard";
+import { useQuery } from '@tanstack/react-query'
+import Loader from "./Loader";
 
 const Service = () => {
 
-    const [services, setServices] = useState([]);
+    const { data, isLoading } = useQuery({
+        queryKey: ['services'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:3000/services')
+            const data = await res.json();
+            return data
+        },
+    })
 
-    useEffect(() => {
-        fetch('/services.json')
-            .then(res => res.json())
-            .then(data => setServices(data))
-    }, []);
+    if(isLoading) {
+        return <Loader></Loader>;
+    }
 
     return (
         <div className="my-8 md:my-14 lg:my-[200px]">
@@ -20,8 +26,8 @@ const Service = () => {
             </div>
             <div className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {
-                    services.map((service) => <ServiceCard key={service._id} service={service
-                    }></ServiceCard>) 
+                    data.map((service) => <ServiceCard key={service._id} service={service
+                    }></ServiceCard>)
                 }
             </div>
         </div>

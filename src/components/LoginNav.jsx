@@ -4,6 +4,7 @@ import logo from "../assets/icons/logo.svg";
 const LoginNav = () => {
 
     const navLinks = <>
+        <li><NavLink to="/" className={({ isActive }) => isActive ? 'text-[#FF3811]' : ''}>Home</NavLink></li>
         <li><NavLink to="/order" className={({ isActive }) => isActive ? 'text-[#FF3811]' : ''}>Order</NavLink></li>
         <li><NavLink to="/order-review" className={({ isActive }) => isActive ? 'text-[#FF3811]' : ''}>Order Review</NavLink></li>
         <li><NavLink to="/manage-inventory" className={({ isActive }) => isActive ? 'text-[#FF3811]' : ''}>Manage Inventory</NavLink></li>
